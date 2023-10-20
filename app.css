@@ -1,0 +1,16 @@
+[data-style="photo"] { 
+    filter : grayscale(100%);
+    width : 100%;
+    height: auto;
+    border-radius: 8px;
+    };
+
+#titleContainer {
+    position: relative; /* Asegura que el z-index funcione */
+    z-index: 100; /* Ajusta el valor según sea necesario para que esté encima de MovingPicture */
+    };
+
+[data-style="field"] {
+    z-index: 1;
+    position: absolute;
+}
