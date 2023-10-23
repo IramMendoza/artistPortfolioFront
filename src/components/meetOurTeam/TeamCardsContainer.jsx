@@ -1,14 +1,11 @@
 import ListRenderer from "../generics/ListRenderer"
 import TeamCard from "./TeamCard"
-import MovingContainer from "../generics/MovingContainer"
 import { useArrayShuffle } from "../../hooks/useArrayShuffle"
-import { useWindowWidth } from "../../hooks/useWindowWidth"
-import { useSimpleAnimation } from "../../hooks/useSimpleAnimation"
 
-const CustomListRenderer = ({list, CardComponent, display}) => {
+const CustomListRenderer = ({members, CardComponent, display, animation}) => {
 
-  const listMembersShuffled = useArrayShuffle(list)
-  
+  const listMembersShuffled = useArrayShuffle(members)
+
   return (
 
     <div className=" pl-2 overflow-x-auto">
@@ -23,22 +20,14 @@ const CustomListRenderer = ({list, CardComponent, display}) => {
 
 const TeamCardsContainer = ({members}) => {
 
-
-  const movementValues = {
-    "Mobile" : [[0,1],[0,1]],
-    "Tablet" : [[0],[0]],
-    "Laptop" : [[0],[0]],
-    "Desktop" : [[0],[0]]
-  }
-
   return (
-    <MovingContainer movementValues={movementValues}>
+    <div>
       <CustomListRenderer
-        list={ members && members }
+        members={ members && members }
         CardComponent={TeamCard}
         display={"flex"}
       />
-    </MovingContainer>
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import DownArrow from '../assets/media/down-svgrepo-com.svg'
+import DownArrowSvg from '../../assets/media/down-svgrepo-com.svg'
 import { motion } from 'framer-motion'
 import { useWindowWidth } from '../../hooks/useWindowWidth'
 import { useSimpleAnimation } from '../../hooks/useSimpleAnimation'
@@ -21,7 +21,7 @@ const DownArrow = () => {
           <motion.img
               style={{ opacity: opacity }}
               className=" w-[3rem]"
-              src={DownArrow} />
+              src={DownArrowSvg} />
       </div>
   )
 }

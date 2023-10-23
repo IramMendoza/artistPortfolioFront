@@ -6,7 +6,7 @@ import Email from "../contactUs/Email"
 
 const ContactUs = () => {
 
-  const movementValues = {
+  const movementValuesY = {
     "Mobile" : [[0,0.6,1],[0, -2000, 0]],
     "Tablet" : [[0,0.6,1],[0, -2000, 0]],
     "Laptop" : [[0,0.6,1],[0, -2000, 0]],
@@ -15,7 +15,7 @@ const ContactUs = () => {
 
   return (
     <div className=' bg-[#f8ebc6] h-screen overflow-y-hidden'>
-        <MovingContainer movementValues={movementValues}>
+        <MovingContainer movementValues={movementValuesY}>
 
           <SectionHeader color="Black" header={"CONTACTO"}/>
 

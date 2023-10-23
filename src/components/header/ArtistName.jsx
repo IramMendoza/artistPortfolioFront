@@ -7,21 +7,21 @@ const ArtistName = ({ name }) => {
     const device = useWindowWidth()
 
     const opacityValues = {
-        "Mobile": [[0, 0.320, 0.400 ,1], [1, 1, 0, 0]],
+        "Mobile": [[0, 0.20, 0.23, 1], [1, 1, 0, 0]],
         "Tablet": [[0, 0.990, 1], [1, 1.7, 0]],
         "Laptop": [[0, 0.990, 1], [1, 1.7, 0]],
         "Desktop": [[0, 0.990, 1], [1, 1.7, 0]],
     }
 
     const movementValues = {
-        "Mobile": [[0, 1], [0, 3400]],
+        "Mobile": [[0, 0.25 ,1], [0, +1400, 1300]],
         "Tablet": [[0, 1], [0, 3000]],
         "Laptop": [[0, 1], [0, 1800]],
         "Desktop": [[0, 1], [0, 1800]],
     }
 
     const colorValues = {
-        "Mobile": [[0, 0.30, 0.32, 1], ["#ffffff", "#ffffff", "#FF2015", "#FF2015"]],
+        "Mobile": [[0, 0.15, 0.20, 1], ["#ffffff", "#ffffff", "#FF2015", "#FF2015"]],
         "Tablet": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],
         "Laptop": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],
         "Desktop": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],

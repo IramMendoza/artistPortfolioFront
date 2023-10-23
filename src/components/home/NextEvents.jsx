@@ -10,7 +10,7 @@ const NextEvents = () => {
   const {data, error } = useGetData(artistNextEvents)
 
   return (
-    <div className=" py-[15rem]">
+    <div className=" py-[10rem]">
       <SectionHeader header={"PROXIMOS"}/>
       { data && data.length === 0 ? <SectionNotFound message={"No hay proximos eventos"} image={ImageCustomNotFound}/> : null }
       { data && data.length > 0 ? <NextEventsContainer events={data}/> : null }
