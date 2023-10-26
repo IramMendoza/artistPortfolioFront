@@ -4,11 +4,10 @@ import Button from "./Button"
 const Form = () => {
   return (
     <div>
-        <Field labelColor="Black" label={"Nombre"} inputColor="#d41813"/>
-        <Field labelColor="Black" label={"Apllido"} inputColor="#e1440f"/>
-        <Field labelColor="Black" label={"Email"} inputColor="#e2ac10"/>
-        <Field labelColor="Black" label={"Asunto"} inputColor="#19d022"/>
-        <Field labelColor="Black" label={"Mensaje"} inputColor="#111e64"/>
+        <Field labelColor="White" label={"Nombre"} inputColor="#FFC30F"/>
+        <Field labelColor="White" label={"Email"} inputColor="#FF5733"/>
+        <Field labelColor="White" label={"Asunto"} inputColor="#C70039"/>
+        <Field labelColor="White" label={"Mensaje"} inputColor="#900C3F"/>
 
         <div className=" w-full py-3">
             <Button text="Enviar"/>

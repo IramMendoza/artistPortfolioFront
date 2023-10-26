@@ -11,7 +11,11 @@ const NextEvents = () => {
 
   return (
     <div className=" py-[10rem]">
-      <SectionHeader header={"PROXIMOS"}/>
+      <div className=" flex justify-center">
+        <div className=" pr-10">
+          <SectionHeader header={"PROXIMOS"}/>
+        </div>
+      </div>
       { data && data.length === 0 ? <SectionNotFound message={"No hay proximos eventos"} image={ImageCustomNotFound}/> : null }
       { data && data.length > 0 ? <NextEventsContainer events={data}/> : null }
     </div>

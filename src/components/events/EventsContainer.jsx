@@ -1,10 +1,10 @@
 import ListRenderer from "../generics/ListRenderer"
-import EventCardVertical from "./EventCardVertical"
+import EventCard from "./EventCard"
 
 const EventsRender = ({events}) => {
 
     return (
-        <ListRenderer list={events} CardComponent={EventCardVertical} />
+        <ListRenderer list={events && events} CardComponent={EventCard} />
     )
 }
 

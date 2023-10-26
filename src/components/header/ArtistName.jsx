@@ -8,21 +8,21 @@ const ArtistName = ({ name }) => {
 
     const opacityValues = {
         "Mobile": [[0, 0.20, 0.23, 1], [1, 1, 0, 0]],
-        "Tablet": [[0, 0.990, 1], [1, 1.7, 0]],
+        "Tablet": [[0, 0.17, 0.19, 1], [1, 1, 0, 0]],
         "Laptop": [[0, 0.990, 1], [1, 1.7, 0]],
         "Desktop": [[0, 0.990, 1], [1, 1.7, 0]],
     }
 
     const movementValues = {
         "Mobile": [[0, 0.25 ,1], [0, +1400, 1300]],
-        "Tablet": [[0, 1], [0, 3000]],
-        "Laptop": [[0, 1], [0, 1800]],
+        "Tablet": [[0, 0.25 ,1], [0, +1200, 1200]],
+        "Laptop": [[0, 0.25 ,1], [0, +1200, 1200]],
         "Desktop": [[0, 1], [0, 1800]],
     }
 
     const colorValues = {
         "Mobile": [[0, 0.15, 0.20, 1], ["#ffffff", "#ffffff", "#FF2015", "#FF2015"]],
-        "Tablet": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],
+        "Tablet": [[0, 0.13, 0.18, 1], ["#ffffff", "#ffffff", "#FF2015", "#FF2015"]],
         "Laptop": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],
         "Desktop": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],
     }

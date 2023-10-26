@@ -8,7 +8,7 @@ const CustomListRenderer = ({members, CardComponent, display, animation}) => {
 
   return (
 
-    <div className=" pl-2 overflow-x-auto">
+    <div className=" pl-2 overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       <ListRenderer
         list={listMembersShuffled}
         CardComponent={CardComponent}

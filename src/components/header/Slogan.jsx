@@ -7,10 +7,10 @@ const Slogan = ({slogan}) => {
   const device = useWindowWidth()
 
   const opacityValues = {
-    "Mobile" : [[0, 0.05], [1, 0]],
-    "Tablet" : [[0, 0.05], [1, 0]],
-    "Laptop" : [[0, 0.05], [1, 0]],
-    "Desktop" : [[0, 0.05], [1, 0]],
+    "Mobile" : [[0, 0.01], [1, 0]],
+    "Tablet" : [[0, 0.01], [1, 0]],
+    "Laptop" : [[0, 0.01], [1, 0]],
+    "Desktop" : [[0, 0.01], [1, 0]],
 
   }
 

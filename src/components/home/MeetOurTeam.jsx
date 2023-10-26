@@ -5,8 +5,8 @@ import MovingContainer from "../generics/MovingContainer"
 const MeetOurTeam = ({members}) => {
 
   const movementValuesY = {
-    "Mobile" : [[0,0.77, 0.83, 1],[0, 0, +420, 300]],
-    "Tablet" : [[0,0.6,1],[0, -2000, 0]],
+    "Mobile" : [[0,0.78, 0.83, 1],[0, 0, +390, 300]],
+    "Tablet" : [[0,0.75, 0.83, 1],[0, 0, +450, 300]],
     "Laptop" : [[0,0.6,1],[0, -2000, 0]],
     "Desktop" : [[0,0.6,1],[0, -2000, 0]]
 }

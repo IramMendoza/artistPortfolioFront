@@ -3,7 +3,7 @@ import SocialMedia from "../followUs/SocialMedia"
 
 const FollowUs = () => {
   return (
-    <section className=" py-10" id="titleContainer">
+    <section className=" pb-[5rem]" id="titleContainer">
         <SectionHeader header={"SIGUENOS"}/>
         <SocialMedia socialMedia={"Facebook"}/>
         <SocialMedia socialMedia={"Instagram"}/>

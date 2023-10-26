@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom'
 import { BrowserRouter, Routes } from "react-router-dom"
 import Home from './pages/Home'
-import Navbar from './components/navbar/Navbar'
+import NavbarTest from './components/navbar/NavbarTest'
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
     <>
       <BrowserRouter>
 
-        <Navbar/>
+        <NavbarTest/>
     
         <Routes>
           <Route path="/" element={ <Home/> }/>
