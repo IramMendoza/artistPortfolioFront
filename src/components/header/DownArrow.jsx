@@ -8,22 +8,22 @@ const DownArrow = () => {
     const device = useWindowWidth()
 
     const opacityValues = {
-        "Mobile" : [[0, 0.05], [1, 0]],
-        "Tablet" : [[0, 0.05], [1, 0]],
-        "Laptop" : [[0, 0.05], [1, 0]],
-        "Desktop" : [[0, 0.05], [1, 0]]
+        "Mobile": [[0, 0.05], [1, 0]],
+        "Tablet": [[0, 0.05], [1, 0]],
+        "Laptop": [[0, 0.05], [1, 0]],
+        "Desktop": [[0, 0.05], [1, 0]]
     }
 
     const opacity = useSimpleAnimation(device, opacityValues)
 
-  return (
-      <div className=" flex justify-center pt-[16rem]">
-          <motion.img
-              style={{ opacity: opacity }}
-              className=" w-[3rem]"
-              src={DownArrowSvg} />
-      </div>
-  )
+    return (
+        <div className=" flex justify-center pt-[14rem]">
+            <motion.img
+                style={{ opacity: opacity }}
+                className=" w-[3rem]"
+                src={DownArrowSvg} />
+        </div>
+    )
 }
 
 export default DownArrow

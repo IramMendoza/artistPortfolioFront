@@ -2,7 +2,7 @@ import ListRenderer from "../generics/ListRenderer"
 import TeamCard from "./TeamCard"
 import { useArrayShuffle } from "../../hooks/useArrayShuffle"
 
-const CustomListRenderer = ({members, CardComponent, display, animation}) => {
+const CustomListRenderer = ({members, CardComponent, display}) => {
 
   const listMembersShuffled = useArrayShuffle(members)
 
