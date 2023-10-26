@@ -4,8 +4,8 @@ import MovingContainer from "../generics/MovingContainer"
 const ImageContactUs = () => {
 
     const movementValuesY = {
-        'Mobile' : [[0, 0.55, 1],[0, +300, +100]],
-        'Tablet' : [[0, 0.95, 1],[0, +200, +300]],
+        'Mobile' : [[0, 0.55, 1],[0, +80, +80]],
+        'Tablet' : [[0, 0.95, 1],[0, +200, +180]],
         'Laptop' : [[0, 0.95, 1],[0, +200, +300]],
         'Desktop' : [[0, 0.95, 1],[0, +200, +300]]
     }

@@ -18,7 +18,7 @@ const ContactUs = () => {
     <div className=' bg-neutral-900 h-screen overflow-y-hidden'>
         <MovingContainer movementValues={movementValuesY}>
 
-          <div className=" pt-10">
+          <div className=" pt-[5rem]">
             <SectionHeader color="White" header={"CONTACTO"}/>
           </div>
 

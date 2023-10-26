@@ -1,48 +1,21 @@
-import { useState } from "react"
 import ButtonMenu from "./ButtonMenu"
-import MenuIcon from "../../assets/media/menu-svgrepo-com.svg"
-
-const OpenMenu = () => {
-
-    return (
-        <div>
-            <ButtonMenu section={"Home"}/>
-            <ButtonMenu/>
-            <ButtonMenu/>
-            <ButtonMenu/>
-        </div>
-    )
-} 
-
-const CloseMenu = () => {
-
-    function close () {
-        if (menuState){
-            setMenuState(false)
-            console.log(menuState)
-        }
-        else {
-            setMenuState(true)
-            console.log(menuState)
-        }
-    }
-    return(
-        <div onClick={close}>
-            <img className=" w-[4rem] p-2" src={MenuIcon}/>
-        </div>
-    )
-}
+import { motion } from "framer-motion"
 
 const Menu = () => {
-
-    const [menuState, setMenuState] = useState(false)
-
   return (
-    <div>
-        {
-            menuState ? <OpenMenu/> : <CloseMenu/>
-        }
-    </div>
+      <motion.div className=" w-full backdrop-blur-sm bg-black/30 py-2 fixed top-0"
+        initial={{ y: +65 }}
+        animate={{ y : +60 }}
+        transition={{ bounceDamping : 10 }}
+        exit={{ y: -150 }}>
+
+        <ButtonMenu section="Home"/>
+        <ButtonMenu section="Galeria"/>
+        <ButtonMenu section="Eventos"/>
+        <ButtonMenu section="Proximos"/>
+        <ButtonMenu section="Contacto"/>
+
+      </motion.div>
   )
 }
 

@@ -1,22 +1,30 @@
-import { artistUrl } from "../../../apiConfig"
-import { useGetData } from "../../hooks/useGetData"
+import MenuIcon from "./MenuIcon"
+import LogoIcon from "./LogoIcon"
 import Menu from "./Menu"
-
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 
 const NavbarTest = () => {
 
-    const { data } = useGetData(artistUrl)
+  const [menuState, setMenuState] = useState(false)
+
+  function handleMenu () {
+    menuState ? setMenuState(false) : setMenuState(true)
+  }
 
   return (
-    <section className=' w-full flex bg-neutral-900'>
+    <section data-style="navbar" className=" w-full sticky top-0 sm:sticky-top-0">
 
-      <div className=" w-[50%]">
-        <img className=" w-[4rem] p-3" src={ data && data.image ? data.image : null }/>
-      </div>
+      <nav data-style="navbar" className=' w-full flex sticky top-0 sm:sticky-top-0 bg-neutral-900'>
+        <LogoIcon/>
+        <MenuIcon onClick={handleMenu}/>
+      </nav>
 
-      <div className=" w-[50%] flex justify-end">
-        <Menu/>
-      </div>
+      <AnimatePresence>
+        {
+          menuState ? <Menu/> : null
+        }
+      </AnimatePresence>
 
     </section>
   )

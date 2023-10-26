@@ -7,7 +7,7 @@
 
 #titleContainer {
     position: relative; /* Asegura que el z-index funcione */
-    z-index: 100; /* Ajusta el valor según sea necesario para que esté encima de MovingPicture */
+    z-index: 50; /* Ajusta el valor según sea necesario para que esté encima de MovingPicture */
     };
 
 [data-style="field"] {
@@ -19,3 +19,8 @@
 .pl-2::-webkit-scrollbar {
     display: none;
   }
+
+[data-style="navbar"] {
+    position: relative;
+    z-index: 100;
+}
