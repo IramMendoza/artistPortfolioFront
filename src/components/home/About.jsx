@@ -1,28 +1,33 @@
-import ImageAbout from "../about/ImageAbout"
+import ImageAboutTest from "../about/ImageAboutTest"
 import SectionHeader from "../generics/SectionHeader"
 import AboutBackground from "../about/AboutBackground"
 import TextAbout from "../about/TextAbout"
+import { useRef } from "react"
 
-const CustomSectionHeader = ({header}) => {
+const CustomSectionHeader = ({ header }) => {
   return (
     <div className=" flex justify-start">
-      <SectionHeader header={header}/>
+      <SectionHeader header={header} />
     </div>
   )
 }
 
-const About = ({about}) => {
+const About = ({ about }) => {
+
+  const container = useRef(null)
 
   return (
-    <AboutBackground>
+    <div ref={container}>
+      <AboutBackground>
 
-      <CustomSectionHeader header={"NOSOTROS"}/>
+        <CustomSectionHeader header={"NOSOTROS"} />
 
-      <TextAbout about={about}/>
+        <TextAbout about={about} />
 
-      <ImageAbout/>
+        <ImageAboutTest ref={container} />
 
-    </AboutBackground>
+      </AboutBackground>
+    </div>
   )
 }
 
