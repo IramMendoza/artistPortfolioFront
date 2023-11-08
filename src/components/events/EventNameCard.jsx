@@ -16,6 +16,9 @@ const EventNameCard = ({eventName}) => {
         <VenueName venue={eventName}/>
         <VenueName venue={eventName}/>
         <VenueName venue={eventName}/>
+        <VenueName venue={eventName}/>
+        <VenueName venue={eventName}/>
+        <VenueName venue={eventName}/>
     </div>
   )
 }

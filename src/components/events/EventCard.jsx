@@ -2,14 +2,13 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRandomNumber } from "../../hooks/useRandomNumber"
 import EventNameCard from "./EventNameCard"
 import { useRef } from "react"
-import { useRefAnimation } from "../../hooks/useRefAnimation"
 
-const EventCard = ({ item, id }) => {
+const EventCard = ({ item }) => {
 
   const card = useRef(null)
 
   const { scrollYProgress } = useScroll({
-    target: id,
+    target: card,
     offset: ['start end', 'end start']
   })
 
@@ -25,8 +24,7 @@ const EventCard = ({ item, id }) => {
   return (
     <div
       ref={card}
-      id={id}
-      className=" w-full px-10 lg:px-[15rem] py-7">
+      className=" w-full px-10 lg:px-[15rem] lg:py-10 py-7">
       <div
         className=" overflow-hidden"
         style={

@@ -5,7 +5,7 @@ import { useRandomNumber } from '../../hooks/useRandomNumber'
 import { useRefAnimation } from '../../hooks/useRefAnimation'
 import { movingPictureAnimation } from './animations/movingPictureAnimation'
 
-const MovingPicture = ({ id, item, ref }) => {
+const MovingPicture = ({ item, reference }) => {
 
   const [scale, setScale] = useState(0)
   const [padding, setPadding] = useState(0)
@@ -37,16 +37,15 @@ const MovingPicture = ({ id, item, ref }) => {
 
   //conservo esta animacion aqui para poder tener el valor random disponible
 
-  const movement = useRefAnimation(device, movementValues, ref)
+  const movement = useRefAnimation(device, movementValues, reference)
 
-  const opacity = useRefAnimation(device, movingPictureAnimation.opacityValues, ref)
+  const opacity = useRefAnimation(device, movingPictureAnimation.opacityValues, reference)
 
   return (
 
     <motion.div className={` w-[100%] h-auto rounded-xl p-2`} style={{ paddingLeft: padding }}>
       <motion.img
         data-style="photo"
-        id={id}
         className=" rounded-s-2xl"
         style={{ y: movement, opacity: opacity, scale: scale }}
         src={item.picture}

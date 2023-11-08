@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef } from "react"
 import MovingPicture from "./MovingPicture"
 
-const CustomListRenderer = ({ list, CardComponent, display, ref }) => {
+const CustomListRenderer = ({ list, CardComponent, display, reference }) => {
 
   if (!list){
     return <div>Loading...</div>
@@ -9,7 +9,7 @@ const CustomListRenderer = ({ list, CardComponent, display, ref }) => {
   return (
     <div className=" py-10" style={{ display : display }}>
       {list.map((item) => (
-        <CardComponent ref={ref} id={item.id} item={item} />
+        <CardComponent reference={reference} key={item.id} item={item} />
       ))}
     </div>
   )
@@ -20,10 +20,10 @@ const GalleryContainer = ({ pictures }) => {
   const container = useRef(null)
 
   return (
-    <section className=" pt-[25rem]" ref={container}>
-      <CustomListRenderer list={pictures[0]} CardComponent={MovingPicture} display="flex" ref={container}/>
-      <CustomListRenderer list={pictures[1]} CardComponent={MovingPicture} display="flex" ref={container}/>
-      <CustomListRenderer list={pictures[2]} CardComponent={MovingPicture} display="flex" ref={container}/>
+    <section className="pt-[]" ref={container}>
+      <CustomListRenderer list={pictures[0]} CardComponent={MovingPicture} display="flex" reference={container}/>
+      <CustomListRenderer list={pictures[1]} CardComponent={MovingPicture} display="flex" reference={container}/>
+      <CustomListRenderer list={pictures[2]} CardComponent={MovingPicture} display="flex" reference={container}/>
     </section>
   )
 }

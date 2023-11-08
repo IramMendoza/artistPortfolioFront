@@ -1,26 +1,41 @@
-import TeamCardsContainer from "../meetOurTeam/TeamCardsContainer"
 import SectionHeader from "../generics/SectionHeader"
-import MovingContainer from "../generics/MovingContainer"
+import TeamCard from "../meetOurTeam/TeamCard"
 import { useGetData } from "../../hooks/useGetData"
 import { artistMembers } from "../../../apiConfig"
 import { useRef } from 'react'
-import { meetOurTeamAnimation } from "./animations/meetOurTeamAnimation"
+import { motion, useScroll, useTransform } from "framer-motion"
+import ListRenderer from "../generics/ListRenderer"
 
 const MeetOurTeam = () => {
 
+  const meetOurTeamContainerRef = useRef(null)
+
+  const { scrollYProgress } = useScroll(
+    {
+      target : meetOurTeamContainerRef
+    }
+  )
+
+  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-95%'])
+
   const { data, error } = useGetData(artistMembers)
 
-  const meetOurTeamContainer = useRef(null)
+  const members = data ? data : []
 
   return (
-    <div className=" overflow-x-hidden pb-[35rem]" ref={meetOurTeamContainer}>
-      <MovingContainer axis="y" movementValues={meetOurTeamAnimation.movementValues} refContainer={meetOurTeamContainer}>
+    <div className=" relative h-[200vh] bg-black" ref={meetOurTeamContainerRef}>
+      <div className={`h-screen items-center overflow-hidden`}>
+      <SectionHeader header='INTEGRANTES'/>
+          <motion.div className="" style={{ x : movementValues}}>
 
-        <SectionHeader header={"INTEGRANTES"} />
+            <div className=" flex">
+              {members.map((item) => (
+                <TeamCard key={item.id} item={item} />
+             ))}
+            </div>
+          </motion.div>
 
-        <TeamCardsContainer members={data ? data : []} refContainer={meetOurTeamContainer} />
-
-      </MovingContainer>
+      </div>
     </div>
   )
 }

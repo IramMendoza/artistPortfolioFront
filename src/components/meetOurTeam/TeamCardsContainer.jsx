@@ -1,14 +1,11 @@
 import TeamCard from "./TeamCard"
+import ListRenderer from "../generics/ListRenderer"
 
-const TeamCardsContainer = ({ members, refContainer }) => {
+const TeamCardsContainer = ({ members }) => {
 
   return (
-    <div className=" pl-2 overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-      <div style={{ display: 'flex' }}>
-        {members.map((item) => (
-          <TeamCard id={item.id} item={item} refContainer={refContainer} />
-        ))}
-      </div>
+    <div className="overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+      <ListRenderer list={members} CardComponent={TeamCard} display={'flex'}/>
     </div>
   )
 }

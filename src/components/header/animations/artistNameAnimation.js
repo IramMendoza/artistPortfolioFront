@@ -10,12 +10,12 @@ export const artistNameAnimation = {
     },
 
     movementValues : {
-        "Very Small Device": [[0, 0.33, 0.75, 1], [0, 0, 1000, 1000]],
-        "Small Device": [[0, 0.27, 0.75, 1], [0, 0, 1200, 1200]],
-        "Medium Device": [[0, 0.27, 0.75, 1], [0, 0, 1300, 1300]],
-        "Large Device": [[0, 0.27, 0.75, 1], [0, 0, 1650, 1650]],
-        "Very Large Device" : [[0, 0.3, 0.75, 1], [0, 0, 1750, 1750]],
-        "Tablet Device" : [[0, 0.3, 0.75, 1], [0, 0, 1850, 1850]],
+        "Very Small Device": [[0, 0.27, 0.75, 1], [0, 0, 1200, 1200]],
+        "Small Device": [[0, 0.40, 0.75, 1], [0, 0, 800, 800]],
+        "Medium Device": [[0, 0.27, 0.75, 1], [0, 0, 1200, 1200]],
+        "Large Device": [[0, 0.27, 0.75, 1], [0, 0, 1200, 1200]],
+        "Very Large Device" : [[0, 0.27, 0.75, 1], [0, 0, 1200, 1200]],
+        "Tablet Device" : [[0, 0.27, 0.75, 1], [0, 0, 1200, 1200]],
     },
 
     colorValues : {

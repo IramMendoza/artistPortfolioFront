@@ -11,7 +11,9 @@ const Events = () => {
   return (
     <section className=' w-full'>
 
-      <SectionHeader header='EVENTOS'/>
+      <div className=" flex justify-center pr-10">
+        <SectionHeader header='EVENTOS'/>
+      </div>
 
       <EventsContainer events={data && data}/>
 

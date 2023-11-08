@@ -11,10 +11,10 @@ const DownArrow = () => {
     const opacity = useSimpleAnimation(device, downArrowAnimation.opacityValues)
 
     return (
-        <div className=" flex justify-center pt-[15rem]">
+        <div className="flex justify-center">
             <motion.img
                 style={{ opacity: opacity }}
-                className=" w-[3rem]"
+                className=" absolute bottom-0 w-[3rem]"
                 src={DownArrowSvg} />
         </div>
     )

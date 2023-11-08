@@ -6,7 +6,7 @@ const ListRenderer = ({ list, CardComponent, display }) => {
   return (
     <div style={{ display : display }}>
       {list.map((item) => (
-        <CardComponent id={item.id} item={item} />
+        <CardComponent key={item.id} item={item} />
       ))}
     </div>
   )

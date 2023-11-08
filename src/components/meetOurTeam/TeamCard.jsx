@@ -1,14 +1,13 @@
 import MovingContainer from "../generics/MovingContainer"
 import { teamCardAnimation } from "./animations/teamCardAnimation"
 
-const TeamCard = ({ id, item, refContainer }) => {
+const TeamCard = ({ item, refContainer }) => {
 
     //Cada TeamCard tendra una animacion igual y se hace de esta manera para
     //independizar su movimiento del container
 
     return (
-        <MovingContainer axis="x" movementValues={teamCardAnimation.movementValues} refContainer={refContainer}>
-            <div id={id} className=" w-full px-7 py-7">
+            <div className=" w-full px-7 py-7">
 
                 <div data-style="photo" style={
                     {
@@ -34,7 +33,6 @@ const TeamCard = ({ id, item, refContainer }) => {
 
                 </div>
             </div>
-        </MovingContainer>
     )
 }
 
