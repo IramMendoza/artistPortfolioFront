@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { useWindowWidth } from "../../hooks/useWindowWidth"
-import { useSimpleAnimation } from "../../hooks/useSimpleAnimation"
+import { useWindowHeight } from '../../hooks/useWindowHeight'
+import { useRefAnimation } from '../../hooks/useRefAnimation'
 
-const MovingContainer = ({children, movementValues, axis="y"}) => {
+const MovingContainer = ({children, movementValues, axis="y", refContainer}) => {
 
-    const device = useWindowWidth()
+    const device = axis === 'y' ? useWindowHeight() : useWindowWidth()
 
-    const movement = useSimpleAnimation(device, movementValues)
+    const movement = useRefAnimation(device, movementValues, refContainer)
 
     const style = axis === 'y' ? { y: movement } : { x: movement }
 

@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRandomNumber } from "../../hooks/useRandomNumber"
 import EventNameCard from "./EventNameCard"
 import { useRef } from "react"
+import { useRefAnimation } from "../../hooks/useRefAnimation"
 
 const EventCard = ({ item, id }) => {
 
@@ -12,7 +13,7 @@ const EventCard = ({ item, id }) => {
     offset: ['start end', 'end start']
   })
 
-  const movement = useTransform(scrollYProgress, [0, 0.31, 0.62, 1], [0, -1000, 0, 0])
+  const movement = useTransform(scrollYProgress, [0, 1], [0, -1000])
 
   const randomNumber = useRandomNumber(0, item.pictures.length - 1)
   //Elige un numero al azar entre 0 y el numero de la longitud del array
@@ -25,7 +26,7 @@ const EventCard = ({ item, id }) => {
     <div
       ref={card}
       id={id}
-      className=" w-full px-10 py-7">
+      className=" w-full px-10 lg:px-[15rem] py-7">
       <div
         className=" overflow-hidden"
         style={
@@ -37,7 +38,7 @@ const EventCard = ({ item, id }) => {
           }
         }>
 
-        <div className=" py-[5rem]" />
+        <div className=" lg:py-[8rem] py-[5rem]" />
 
         <motion.div style={{ x: movement }}>
           <EventNameCard eventName={item.venue} />

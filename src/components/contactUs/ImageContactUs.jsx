@@ -1,18 +1,11 @@
 import Image from "../../assets/media/reptiliaPngComp.png"
 import MovingContainer from "../generics/MovingContainer"
+import { imageContactUsAnimation } from "./animations/imageContactUsAnimation"
 
-const ImageContactUs = () => {
-
-  const movementValuesY = {
-    'Mobile': [[0, 0.55, 1], [0, +80, +80]],
-    'Tablet': [[0, 0.95, 1], [0, +200, +180]],
-    'Laptop': [[0, 0.95, 1], [0, +200, +300]],
-    'Desktop': [[0, 0.95, 1], [0, +200, +300]]
-  }
-
+const ImageContactUs = ({refContainer}) => {
 
   return (
-    <MovingContainer movementValues={movementValuesY}>
+    <MovingContainer movementValues={imageContactUsAnimation.movementValues} refContainer={refContainer}>
       <div className=" flex justify-end">
         <img className=" w-[15rem]" src={Image} />
       </div>

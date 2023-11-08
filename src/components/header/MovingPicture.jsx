@@ -1,39 +1,19 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { useWindowWidth } from '../../hooks/useWindowWidth'
+import { useWindowHeight } from '../../hooks/useWindowHeight'
 import { useRandomNumber } from '../../hooks/useRandomNumber'
-import { useSimpleAnimation } from '../../hooks/useSimpleAnimation'
+import { useRefAnimation } from '../../hooks/useRefAnimation'
+import { movingPictureAnimation } from './animations/movingPictureAnimation'
 
-const MovingPicture = ({ id, item }) => {
+const MovingPicture = ({ id, item, ref }) => {
 
-  const [scale, setScale] = useState('')
-  const [padding, setPadding] = useState('')
-  const [randomMovement, setRandomMovement] = useState('')
-
-  const device = useWindowWidth()
-
-  const movementValues = {
-    "Mobile": [[0, 1], [0, +randomMovement]],
-    "Tablet": [[0, 1], [0, +randomMovement]],
-    "Laptop": [[0, 1], [0, +randomMovement]],
-    "Desktop": [[0, 1], [0, +randomMovement]]
-  }
-
-  const opacityValues = {
-    "Mobile": [[0, 0.8], [1, 0]],
-    "Tablet": [[0, 0.8], [1, 0]],
-    "Laptop": [[0, 0.8], [1, 0]],
-    "Desktop": [[0, 0.8], [1, 0]],
-  }
-
-  const movement = useSimpleAnimation(device, movementValues)
-
-  const opacity = useSimpleAnimation(device, opacityValues)
-
+  const [scale, setScale] = useState(0)
+  const [padding, setPadding] = useState(0)
+  const [randomMovement, setRandomMovement] = useState(0)
 
   useEffect(() => {
     // Generar un número aleatorio entre 75-120
-    const randomScale = useRandomNumber(75, 120)
+    const randomScale = useRandomNumber(75, 150)
     // Convertirlo en una cadena con "%" al final
     setScale(`${randomScale}%`)
 
@@ -44,7 +24,22 @@ const MovingPicture = ({ id, item }) => {
     setRandomMovement(randomMovement)
   }, [])
 
+  const device = useWindowHeight()
 
+  const movementValues = {
+    "Very Small Device": [[0, 1], [0, +randomMovement]],
+    "Small Device": [[0, 1], [0, +randomMovement]],
+    "Medium Device": [[0, 1], [0, +randomMovement]],
+    "Large Device": [[0, 1], [0, +randomMovement]],
+    "Very Large Device" : [[0, 1], [0, +randomMovement]],
+    "Tablet Device" : [[0, 1], [0, +randomMovement]],
+  }
+
+  //conservo esta animacion aqui para poder tener el valor random disponible
+
+  const movement = useRefAnimation(device, movementValues, ref)
+
+  const opacity = useRefAnimation(device, movingPictureAnimation.opacityValues, ref)
 
   return (
 
@@ -54,7 +49,7 @@ const MovingPicture = ({ id, item }) => {
         id={id}
         className=" rounded-s-2xl"
         style={{ y: movement, opacity: opacity, scale: scale }}
-        src={item.photo}
+        src={item.picture}
       />
     </motion.div>
 

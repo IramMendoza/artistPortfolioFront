@@ -1,47 +1,29 @@
-import ListRenderer from "../generics/ListRenderer"
+import { useRef, useEffect, useState } from "react"
 import MovingPicture from "./MovingPicture"
-import { useWindowWidth } from "../../hooks/useWindowWidth"
-import { useArraySplit } from "../../hooks/useArraySplit"
-import { useDeviceValue } from "../../hooks/useDeviceValue"
-import { useArrayShuffle } from "../../hooks/useArrayShuffle"
 
-const CustomListRenderer = ({ list, CardComponent, display }) => {
+const CustomListRenderer = ({ list, CardComponent, display, ref }) => {
+
+  if (!list){
+    return <div>Loading...</div>
+  }
   return (
-    <div className=" p-10">
-      <ListRenderer list={list} CardComponent={CardComponent} display={display}/>
+    <div className=" py-10" style={{ display : display }}>
+      {list.map((item) => (
+        <CardComponent ref={ref} id={item.id} item={item} />
+      ))}
     </div>
   )
 }
 
-const GalleryContainer = ({ photos }) => {
+const GalleryContainer = ({ pictures }) => {
 
-  const howMuchGalleryContainerToRenderValues = {
-    "Mobile" : 3,
-    "Tablet" : 2,
-    "Laptop" : 2,
-    "Desktop" : 2
-  }
-
-  const device = useWindowWidth()
-
-  const shuffledPhotos = useArrayShuffle(photos)
-
-  const howMuchGalleryContainerToRender = useDeviceValue(device, howMuchGalleryContainerToRenderValues)
-
-  const dividedList = useArraySplit(shuffledPhotos, howMuchGalleryContainerToRender)
+  const container = useRef(null)
 
   return (
-    <section>
-      <CustomListRenderer list={dividedList[0]} CardComponent={MovingPicture} display={"flex"} />
-      <CustomListRenderer list={dividedList[1]} CardComponent={MovingPicture} display={"flex"}/>
-
-      {
-        howMuchGalleryContainerToRender === 3 &&
-        <div>
-          <CustomListRenderer list={dividedList[2]} CardComponent={MovingPicture} display={"flex"}/>
-          <CustomListRenderer list={dividedList[0]} CardComponent={MovingPicture} display={"flex"}/>
-        </div>
-      }
+    <section className=" pt-[25rem]" ref={container}>
+      <CustomListRenderer list={pictures[0]} CardComponent={MovingPicture} display="flex" ref={container}/>
+      <CustomListRenderer list={pictures[1]} CardComponent={MovingPicture} display="flex" ref={container}/>
+      <CustomListRenderer list={pictures[2]} CardComponent={MovingPicture} display="flex" ref={container}/>
     </section>
   )
 }

@@ -14,17 +14,17 @@ const CustomSectionHeader = ({ header }) => {
 
 const About = ({ about }) => {
 
-  const container = useRef(null)
+  const aboutContainer = useRef(null)
 
   return (
-    <div ref={container}>
+    <div ref={aboutContainer}>
       <AboutBackground>
 
         <CustomSectionHeader header={"NOSOTROS"} />
 
         <TextAbout about={about} />
 
-        <ImageAboutTest ref={container} />
+        <ImageAboutTest refContainer={aboutContainer} />
 
       </AboutBackground>
     </div>

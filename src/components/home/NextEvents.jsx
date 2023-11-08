@@ -12,7 +12,7 @@ const NextEvents = () => {
   return (
     <div className=" py-[10rem]">
       <div className=" flex justify-center">
-        <div className=" pr-10">
+        <div className=" flex justify-center pr-[10rem]">
           <SectionHeader header={"PROXIMOS"}/>
         </div>
       </div>

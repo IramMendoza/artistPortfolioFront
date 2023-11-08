@@ -3,20 +3,17 @@ import SectionHeader from "../generics/SectionHeader"
 import Form from "../contactUs/Form"
 import Email from "../contactUs/Email"
 import ImageContact from "../contactUs/ImageContactUs"
+import { useRef } from "react"
+import { contactUsAnimation } from "./animations/contactUsAnimation"
 
 
 const ContactUs = () => {
 
-  const movementValuesY = {
-    "Mobile" : [[0,0.6,1],[0, -2000, 0]],
-    "Tablet" : [[0,0.6,1],[0, -2000, 0]],
-    "Laptop" : [[0,0.6,1],[0, -2000, 0]],
-    "Desktop" : [[0,0.6,1],[0, -2000, 0]]
-}
+  const contactUsContainer = useRef(null)
 
   return (
-    <div className=' bg-neutral-900 h-screen overflow-y-hidden'>
-        <MovingContainer movementValues={movementValuesY}>
+    <div ref={contactUsContainer} className=' bg-neutral-900 h-screen overflow-y-hidden overflow-x-auto'>
+        <MovingContainer movementValues={contactUsAnimation.movementValues} refContainer={contactUsContainer}>
 
           <div className=" pt-[5rem]">
             <SectionHeader color="White" header={"CONTACTO"}/>
@@ -26,7 +23,7 @@ const ContactUs = () => {
 
           <Form/>
 
-          <ImageContact/>
+          <ImageContact refContainer={contactUsContainer}/>
 
         </MovingContainer>
     </div>

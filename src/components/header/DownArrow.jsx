@@ -1,23 +1,17 @@
 import DownArrowSvg from '../../assets/media/down-svgrepo-com.svg'
 import { motion } from 'framer-motion'
-import { useWindowWidth } from '../../hooks/useWindowWidth'
+import { useWindowHeight } from '../../hooks/useWindowHeight'
 import { useSimpleAnimation } from '../../hooks/useSimpleAnimation'
+import { downArrowAnimation } from './animations/downArrowAnimation'
 
 const DownArrow = () => {
 
-    const device = useWindowWidth()
+    const device = useWindowHeight()
 
-    const opacityValues = {
-        "Mobile": [[0, 0.05], [1, 0]],
-        "Tablet": [[0, 0.05], [1, 0]],
-        "Laptop": [[0, 0.05], [1, 0]],
-        "Desktop": [[0, 0.05], [1, 0]]
-    }
-
-    const opacity = useSimpleAnimation(device, opacityValues)
+    const opacity = useSimpleAnimation(device, downArrowAnimation.opacityValues)
 
     return (
-        <div className=" flex justify-center pt-[14rem]">
+        <div className=" flex justify-center pt-[15rem]">
             <motion.img
                 style={{ opacity: opacity }}
                 className=" w-[3rem]"

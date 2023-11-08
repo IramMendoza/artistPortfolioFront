@@ -1,32 +1,14 @@
-import ListRenderer from "../generics/ListRenderer"
 import TeamCard from "./TeamCard"
-import { useArrayShuffle } from "../../hooks/useArrayShuffle"
 
-const CustomListRenderer = ({members, CardComponent, display}) => {
-
-  const listMembersShuffled = useArrayShuffle(members)
+const TeamCardsContainer = ({ members, refContainer }) => {
 
   return (
-
     <div className=" pl-2 overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-      <ListRenderer
-        list={listMembersShuffled}
-        CardComponent={CardComponent}
-        display={display}
-      />
-    </div>
-  )
-}
-
-const TeamCardsContainer = ({members}) => {
-
-  return (
-    <div>
-      <CustomListRenderer
-        members={ members && members }
-        CardComponent={TeamCard}
-        display={"flex"}
-      />
+      <div style={{ display: 'flex' }}>
+        {members.map((item) => (
+          <TeamCard id={item.id} item={item} refContainer={refContainer} />
+        ))}
+      </div>
     </div>
   )
 }

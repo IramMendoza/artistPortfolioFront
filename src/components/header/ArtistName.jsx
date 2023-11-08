@@ -1,37 +1,18 @@
-import { useWindowWidth } from '../../hooks/useWindowWidth'
-import { useSimpleAnimation } from '../../hooks/useSimpleAnimation'
+import { useWindowHeight } from "../../hooks/useWindowHeight"
+import { useRefAnimation } from '../../hooks/useRefAnimation'
 import { motion } from 'framer-motion'
+import { artistNameAnimation } from './animations/artistNameAnimation'
 
-const ArtistName = ({ name }) => {
+const ArtistName = ({ name, reference }) => {
 
-    const device = useWindowWidth()
+    const device = useWindowHeight()
+    console.log(device)
 
-    const opacityValues = {
-        "Mobile": [[0, 0.20, 0.23, 1], [1, 1, 0, 0]],
-        "Tablet": [[0, 0.17, 0.19, 1], [1, 1, 0, 0]],
-        "Laptop": [[0, 0.990, 1], [1, 1.7, 0]],
-        "Desktop": [[0, 0.990, 1], [1, 1.7, 0]],
-    }
+    const opacity = useRefAnimation(device, artistNameAnimation.opacityValues, reference)
 
-    const movementValues = {
-        "Mobile": [[0, 0.25 ,1], [0, +1400, 1300]],
-        "Tablet": [[0, 0.25 ,1], [0, +1200, 1200]],
-        "Laptop": [[0, 0.25 ,1], [0, +1200, 1200]],
-        "Desktop": [[0, 1], [0, 1800]],
-    }
+    const movement = useRefAnimation(device, artistNameAnimation.movementValues, reference)
 
-    const colorValues = {
-        "Mobile": [[0, 0.15, 0.20, 1], ["#ffffff", "#ffffff", "#FF2015", "#FF2015"]],
-        "Tablet": [[0, 0.13, 0.18, 1], ["#ffffff", "#ffffff", "#FF2015", "#FF2015"]],
-        "Laptop": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],
-        "Desktop": [[0, 0.62, 1], ["#ffffff", "#ffffff", "#FF2015"]],
-    }
-
-    const opacity = useSimpleAnimation(device, opacityValues)
-
-    const movement = useSimpleAnimation(device, movementValues)
-
-    const color = useSimpleAnimation(device, colorValues)
+    const color = useRefAnimation(device, artistNameAnimation.colorValues, reference)
 
     return (
         <div>

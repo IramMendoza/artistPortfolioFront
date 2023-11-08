@@ -17,7 +17,6 @@ const Home = () => {
       <Header
         slogan={ data && data.slogan ? data.slogan : "" }
         name={ data && data.name ? data.name : "" }
-        photos={ data && data.photos ? data.photos : [] }
       />
 
       <About
@@ -28,7 +27,7 @@ const Home = () => {
 
       <NextEvents/>
 
-      <MeetOurTeam members={ data && data.members ? data.members : [] }/>
+      <MeetOurTeam/>
 
       <FollowUs/>
 

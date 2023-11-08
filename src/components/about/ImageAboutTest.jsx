@@ -1,17 +1,15 @@
 import ImageAboutPng from "../../assets/media/PNGtheNewAbnormal.png"
-import { motion, useTransform, useScroll } from "framer-motion"
+import { motion } from "framer-motion"
+import { useRefAnimation } from "../../hooks/useRefAnimation"
+import { useWindowWidth } from "../../hooks/useWindowWidth"
+import { imageAboutAnimation } from "./animations/imageAboutAnimation"
 
 
-const ImageAbout = ({ref}) => {
+const ImageAbout = ({refContainer}) => {
 
-    const { scrollYProgress } = useScroll({
-        target : ref,
-        offset : ['start end', 'end start']
-        }
-    )
+    const device = useWindowWidth()
 
-    const movementX = useTransform(scrollYProgress, [0, 0.3, 0.5, 1],[200,200, -500, -500])
-    console.log(movementX)
+    const movementX = useRefAnimation(device, imageAboutAnimation.movementValues, refContainer)
 
   return (
       <motion.div
