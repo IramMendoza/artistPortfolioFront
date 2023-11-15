@@ -1,7 +1,7 @@
 import SectionHeader from "../generics/SectionHeader"
 import { useGetData } from "../../hooks/useGetData"
 import { artistNextEvents } from "../../../apiConfig"
-import NextEventsContainer from "../nextEvents/NextEventsContainer"
+import NextEventsContainer from "./NextEventsContainer"
 import ImageCustomNotFound from "../../assets/media/anglesBack.jpeg"
 import SectionNotFound from "../generics/SectionNotFound"
 
@@ -12,7 +12,7 @@ const NextEvents = () => {
   return (
     <div className=" py-[10rem]">
       <div className=" flex justify-center">
-        <div className=" flex justify-center pr-[10rem]">
+        <div className=" flex justify-center">
           <SectionHeader header={"PROXIMOS"}/>
         </div>
       </div>

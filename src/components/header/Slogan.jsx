@@ -1,13 +1,12 @@
-import { motion } from "framer-motion"
-import { useWindowHeight } from "../../hooks/useWindowHeight"
-import { useSimpleAnimation } from "../../hooks/useSimpleAnimation"
-import { sloganAnimation } from "./animations/sloganAnimation"
+import { motion, useScroll, useTransform } from "framer-motion"
 
-const Slogan = ({ slogan }) => {
+const Slogan = ({ slogan, reference }) => {
 
-  const device = useWindowHeight()
+  const { scrollYProgress } = useScroll(
+    { target : reference }
+  )
 
-  const opacity = useSimpleAnimation(device, sloganAnimation.opacityValues)
+  const opacity = useTransform(scrollYProgress,[0, 0.03, 1],[1, 0, 0])
 
   return (
       <motion.h1

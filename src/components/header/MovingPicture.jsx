@@ -1,9 +1,6 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { useWindowHeight } from '../../hooks/useWindowHeight'
 import { useRandomNumber } from '../../hooks/useRandomNumber'
-import { useRefAnimation } from '../../hooks/useRefAnimation'
-import { movingPictureAnimation } from './animations/movingPictureAnimation'
 
 const MovingPicture = ({ item, reference }) => {
 
@@ -13,41 +10,29 @@ const MovingPicture = ({ item, reference }) => {
 
   useEffect(() => {
     // Generar un número aleatorio entre 75-120
-    const randomScale = useRandomNumber(75, 150)
+    const randomScale = useRandomNumber(75, 200)
     // Convertirlo en una cadena con "%" al final
     setScale(`${randomScale}%`)
 
-    const randomPadding = useRandomNumber(3, 10) - 3
+    const randomPadding = useRandomNumber(0, 5) - 3
     setPadding(randomPadding)
 
-    const randomMovement = useRandomNumber(3000, 5000) - 7000
+    const randomMovement = useRandomNumber(3000, 7000) - 13000
     setRandomMovement(randomMovement)
   }, [])
 
-  const device = useWindowHeight()
+  const { scrollYProgress } = useScroll()
 
-  const movementValues = {
-    "Very Small Device": [[0, 1], [0, +randomMovement]],
-    "Small Device": [[0, 1], [0, +randomMovement]],
-    "Medium Device": [[0, 1], [0, +randomMovement]],
-    "Large Device": [[0, 1], [0, +randomMovement]],
-    "Very Large Device" : [[0, 1], [0, +randomMovement]],
-    "Tablet Device" : [[0, 1], [0, +randomMovement]],
-  }
+  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, 0])
 
-  //conservo esta animacion aqui para poder tener el valor random disponible
-
-  const movement = useRefAnimation(device, movementValues, reference)
-
-  const opacity = useRefAnimation(device, movingPictureAnimation.opacityValues, reference)
+  const y = useTransform(scrollYProgress,[0,1],[0,+randomMovement])
 
   return (
 
-    <motion.div className={` w-[100%] h-auto rounded-xl p-2`} style={{ paddingLeft: padding }}>
+    <motion.div className=' lg:max-w-[20vh]' style={{ padding: padding }}>
       <motion.img
         data-style="photo"
-        className=" rounded-s-2xl"
-        style={{ y: movement, opacity: opacity, scale: scale }}
+        style={{ y: y, opacity: opacity, scale : scale }}
         src={item.picture}
       />
     </motion.div>

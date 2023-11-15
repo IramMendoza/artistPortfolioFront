@@ -1,5 +1,4 @@
 import MovingContainer from "../generics/MovingContainer"
-import { teamCardAnimation } from "./animations/teamCardAnimation"
 
 const TeamCard = ({ item, refContainer }) => {
 

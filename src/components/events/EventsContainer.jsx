@@ -4,7 +4,7 @@ import EventCard from "./EventCard"
 const EventsRender = ({events}) => {
 
     return (
-        <ListRenderer list={events && events} CardComponent={EventCard} />
+        <ListRenderer list={events && events} CardComponent={EventCard}display='flex' />
     )
 }
 

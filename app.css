@@ -5,6 +5,12 @@
     border-radius: 8px;
     };
 
+[data-style='headerPicture'] {
+    filter: grayscale(100%);
+    width : 100%;
+    height: auto;
+}
+
 #titleContainer {
     position: relative; /* Asegura que el z-index funcione */
     z-index: 50; /* Ajusta el valor según sea necesario para que esté encima de MovingPicture */

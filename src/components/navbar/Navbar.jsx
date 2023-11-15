@@ -13,9 +13,9 @@ const Navbar = () => {
   }
 
   return (
-    <section data-style="navbar" className=" w-full sticky top-0 sm:sticky-top-0">
+    <section data-style="navbar" className=" w-full top-0">
 
-      <nav data-style="navbar" className=' w-full flex sticky top-0 sm:sticky-top-0 bg-neutral-900'>
+      <nav data-style="navbar" className=' w-full flex bg-neutral-900'>
         <LogoIcon/>
         <MenuIcon menuState={menuState} onClick={handleMenu}/>
       </nav>

@@ -1,14 +1,13 @@
 import DownArrowSvg from '../../assets/media/down-svgrepo-com.svg'
-import { motion } from 'framer-motion'
-import { useWindowHeight } from '../../hooks/useWindowHeight'
-import { useSimpleAnimation } from '../../hooks/useSimpleAnimation'
-import { downArrowAnimation } from './animations/downArrowAnimation'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
-const DownArrow = () => {
+const DownArrow = ({ reference }) => {
 
-    const device = useWindowHeight()
+    const { scrollYProgress } = useScroll(
+        { target : reference }
+    )
 
-    const opacity = useSimpleAnimation(device, downArrowAnimation.opacityValues)
+    const opacity = useTransform(scrollYProgress, [0, 0.03, 1],[1, 0, 0])
 
     return (
         <div className="flex justify-center">

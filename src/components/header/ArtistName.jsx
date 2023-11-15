@@ -1,24 +1,31 @@
-import { useWindowHeight } from "../../hooks/useWindowHeight"
-import { useRefAnimation } from '../../hooks/useRefAnimation'
-import { motion } from 'framer-motion'
-import { artistNameAnimation } from './animations/artistNameAnimation'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
-const ArtistName = ({ name, reference }) => {
+const ArtistName = ({ name, homeReference, galleryReference }) => {
 
-    const device = useWindowHeight()
+    const { scrollYProgress } = useScroll(
+        { target : homeReference }
+    )
 
-    const opacity = useRefAnimation(device, artistNameAnimation.opacityValues, reference)
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 0.6, 1],[1, 1, 0, 0])
 
-    const color = useRefAnimation(device, artistNameAnimation.colorValues, reference)
+    const color = useTransform(scrollYProgress,[0, 0.3, 0.5, 1],["#ffffff", "#ffffff", "#FF2015", "#FF2015"])
+    
 
     return (
-        <motion.div className=" flex justify-center" style={{ opacity: opacity, color: color }}>
-            <h1
-                id="titleContainer"
-                className={`lg:text-[8rem] maxPh:text-[4rem] max-w[100%] text-[3rem] font-semibold text-slate-100 text-center`}>
-                {name}
-            </h1>
-        </motion.div>
+        <>
+            {   galleryReference ?
+                    <div className=" flex justify-center">
+                        <motion.h1
+                        style={{ opacity: opacity, color: color }}
+                        id="titleContainer"
+                        className={`lg:text-[15vh] md:text-[6rem] maxPh:text-[4rem] max-w[100%] text-[3rem] font-semibold text-slate-100 text-center`}>
+                        {name}
+                        </motion.h1>
+                    </div>
+                    : null
+            }
+        </>
+
     )
 }
 

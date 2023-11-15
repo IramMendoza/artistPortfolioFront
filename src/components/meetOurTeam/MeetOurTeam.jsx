@@ -1,5 +1,5 @@
 import SectionHeader from "../generics/SectionHeader"
-import TeamCard from "../meetOurTeam/TeamCard"
+import TeamCard from "./TeamCard"
 import { useGetData } from "../../hooks/useGetData"
 import { artistMembers } from "../../../apiConfig"
 import { useRef } from 'react'
@@ -15,28 +15,21 @@ const MeetOurTeam = () => {
       target : meetOurTeamContainerRef
     }
   )
-
-  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-95%'])
+  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-195%'])
 
   const { data, error } = useGetData(artistMembers)
 
-  const members = data ? data : []
-
   return (
-    <div className=" relative h-[200vh] bg-black" ref={meetOurTeamContainerRef}>
-      <div className={`h-screen items-center overflow-hidden`}>
-      <SectionHeader header='INTEGRANTES'/>
-          <motion.div className="" style={{ x : movementValues}}>
-
-            <div className=" flex">
-              {members.map((item) => (
-                <TeamCard key={item.id} item={item} />
-             ))}
-            </div>
+    <section className=" relative h-[300vh] bg-black" ref={meetOurTeamContainerRef}>
+      <div className={`sticky top-[22vh] h-[80vh] items-center overflow-hidden`}>
+        <div className=" pl-[4vh]">
+          <SectionHeader header='INTEGRANTES'/>
+        </div>
+          <motion.div style={{ x : movementValues}}>
+            <ListRenderer list={data ? data : []} CardComponent={TeamCard} display={'flex'}/>
           </motion.div>
-
       </div>
-    </div>
+    </section>
   )
 }
 
