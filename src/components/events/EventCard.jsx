@@ -16,7 +16,7 @@ const EventCard = ({ item }) => {
 
   const cardVariants = {
     hover : {
-      scale : 1.2,
+      scale : 1.1,
       filter : 'grayscale(0%)',
       transition : {
         duration : 0.05

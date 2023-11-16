@@ -11,7 +11,7 @@ function App() {
 
 
   return (
-    <>
+    <div className=' bg-black'>
       <BrowserRouter>
 
         <Navbar />
@@ -25,7 +25,7 @@ function App() {
         </Routes>
 
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 

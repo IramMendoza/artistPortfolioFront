@@ -5,7 +5,6 @@ import { artistMembers } from "../../../apiConfig"
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from "framer-motion"
 import ListRenderer from "../generics/ListRenderer"
-import ArtistNameContainer from "./ArtistNameContainer"
 
 const MeetOurTeam = () => {
 
@@ -31,13 +30,13 @@ const MeetOurTeam = () => {
   const { data, error } = useGetData(artistMembers)
 
   return (
-    <section className={`relative h-[300vh]`} ref={meetOurTeamContainerRef}>
-      <div className={`${stickyMediaQuerie} top-[22vh] md:relative md:top-[22vh] h-[80vh] z-20 items-center overflow-hidden`}>
+    <section className={`relative md:h-screen h-[300vh] bg-black`} ref={meetOurTeamContainerRef}>
+      <div className={`${stickyMediaQuerie} top-[22vh] md:relative h-[80vh] z-20 items-center overflow-hidden`}>
         <div className=" pl-[4vh] md:text-center">
           <SectionHeader header='INTEGRANTES'/>
         </div>
           <motion.div style={{ x : MovementMediaQuerie }}>
-              <ListRenderer list={data ? data : []} CardComponent={TeamCard} display={'flex'}/>
+            <ListRenderer list={data ? data : []} CardComponent={TeamCard} display={'flex'}/>
           </motion.div>
       </div>
     </section>
