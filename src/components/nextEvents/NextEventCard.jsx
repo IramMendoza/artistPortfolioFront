@@ -8,7 +8,7 @@ const NextEventCard = ({id, item}) => {
     <div className=" flex justify-center w-full p-10">
       <div id={id} className=" w-[20rem] shadow-2xl bg-white ">
 
-        <img className=" p-3" src={item.flyer}/>
+        <img className=" p-3" src={item.pictures[0].picture}/>
 
         <BuyTicketButton/>
 

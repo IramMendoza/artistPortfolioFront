@@ -7,16 +7,15 @@ import EventCard from './EventCard'
 import { useState, useEffect } from "react"
 
 
-const Events = () => {
+const Events = ({ amountToRender }) => {
 
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
     setWidth(window.innerWidth)
-    console.log(width)
   }, []);
 
-  const { data, error } = useGetData(artistEvents)
+  const { data, error } = useGetData(artistEvents + amountToRender)
 
   return (
     <section className=' overflow-x-visible w-full'>

@@ -11,9 +11,9 @@ const Menu = ({onClick}) => {
 
       <ButtonMenu onClick={onClick} to="/" section="Home" />
       <ButtonMenu onClick={onClick} to="/gallery" section="Galeria" />
-      <ButtonMenu section="Eventos" />
-      <ButtonMenu section="Proximos" />
-      <ButtonMenu section="Contacto" />
+      <ButtonMenu onClick={onClick} to="/events" section="Eventos" />
+      <ButtonMenu onClick={onClick} to="/events/next_events" section="Proximos" />
+      <ButtonMenu onClick={onClick} to="/contact" section="Contacto" />
 
     </motion.div>
   )

@@ -1,17 +1,22 @@
-import { artistUrl } from "../../apiConfig"
+import { artistPictures } from "../../apiConfig"
+import ListRenderer from "../components/generics/ListRenderer"
 import { useGetData } from "../hooks/useGetData"
+
+function Picture ({item}) {
+  return (
+    <div>
+      
+    </div>
+  )
+}
 
 const Gallery = () => {
 
-  const { data, error } =  useGetData(artistUrl)
+  const { data, error } =  useGetData(artistPictures)
 
   return (
     <div>
-        <div className=" w-full relative">
-          <div className=" absolute z-10 bg-yellow-900 h-screen w-full text-slate-50 text-5xl pt-20"> integrantes </div>
-          <div className=" sticky top-0 z-0 bg-lime-700 h-screen text-white text-5xl pt-20">ROTO roto</div>
-        <div className=" h-screen"/>
-      </div>
+      <ListRenderer list={data && data} CardComponent={Picture} display={'flex'}/>
     </div>
   )
 }

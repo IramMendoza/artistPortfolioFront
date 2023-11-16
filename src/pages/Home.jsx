@@ -28,7 +28,7 @@ const Home = () => {
         />
       </div>
 
-      <Events/>
+      <Events amountToRender={3}/>
 
       <NextEvents/>
 
