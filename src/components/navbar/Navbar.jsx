@@ -13,7 +13,7 @@ const Navbar = () => {
   }
 
   return (
-    <section data-style="navbar" className=" w-full top-0">
+    <section data-style="navbar" className=" w-full fixed top-0">
 
       <nav data-style="navbar" className=' w-full flex bg-neutral-900'>
         <LogoIcon/>

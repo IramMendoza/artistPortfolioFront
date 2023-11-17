@@ -53,7 +53,10 @@ const Gallery = () => {
 
   function handleButton (link){
     axios.get(link)
-    .then(response => setCurrentPage(response.data))
+    .then(response => {
+      setCurrentPage(response.data);
+      window.scrollTo({ left: 0, behavior: 'smooth' });
+    })
     .catch(error => setError(error))
   }
 
@@ -65,9 +68,9 @@ const Gallery = () => {
 
   return (
     <motion.section transition={{ duration : 0.5 }} animate={{ opacity : 1 }} initial={{ opacity : 0 }}
-      className=" bg-black h-[95vh]">
+      className=" bg-black h-screen">
 
-      <div className=" text-center">
+      <div className=" pt-[10vh] text-center">
         <SectionHeader header='Eventos' />
       </div>
 

@@ -1,39 +1,12 @@
 import { artistPictures } from "../../apiConfig"
-import { useGetData } from "../hooks/useGetData"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import SectionHeader from "../components/generics/SectionHeader"
-
-function PictureCard ({item}) {
-  return (
-    <div className=" w-full sm:w-[65vh] md:w-[65vh] lg:w-[50vh] lg:px-[2vh] lg:py-[5vh] px-[4vh] py-[4vh]">
-      <motion.div
-        transition={{ duration : 0.2 }} animate={{ opacity : 1 }} initial={{ opacity : 0 }}
-        className=""
-        style={
-          {
-            backgroundImage: `url(${item.picture})`,
-            backgroundSize: "cover", // Ajusta la imagen al tamaño del contenedor
-            backgroundRepeat: "no-repeat", // Evita la repetición de la imagen de fondo
-            backgroundPosition: "center center",
-            filter: "grayscale(0%)" // Centra la imagen horizontal y verticalmente
-          }
-        }>
-
-        <div className="px-[30vh] py-[30vh]" />
-
-      </motion.div>
-    </div> 
-  )
-}
-
-function Button ({ handleFunction, text }) {
-  return (
-    <button className=" text-white px-[3vh] text-xl md:text-2xl" onClick={handleFunction}>
-      { text }
-    </button>
-  )
-}
+import RightArrowPng from "../assets/media/right-arrow.png"
+import LeftArrowPng from "../assets/media/left-arrow.png"
+import Button from "../components/gallery/Button"
+import Arrow from "../components/gallery/Arrow"
+import PictureCard from "../components/gallery/PictureCard"
 
 const Gallery = () => {
 
@@ -44,7 +17,10 @@ const Gallery = () => {
 
   function handleButton (link){
     axios.get(link)
-    .then(response => setCurrentPage(response.data))
+    .then(response => {
+      setCurrentPage(response.data);
+      window.scrollTo({ left: 0, behavior: 'smooth' });
+    })
     .catch(error => setError(error))
   }
 
@@ -56,17 +32,24 @@ const Gallery = () => {
 
   return (
     <motion.section transition={{ duration : 0.5 }} animate={{ opacity : 1 }} initial={{ opacity : 0 }}
-      className=" bg-black h-[95vh]">
+      className=" bg-black h-screen">
 
-      <div className=" text-center">
+      <div className=" pt-[10vh] text-center">
         <SectionHeader header='Galeria' />
       </div>
 
-      <div className="flex overflow-x-scroll">
+      <section className="flex overflow-x-scroll">
         {currentPage.results && currentPage.results.map((item) => (
           <PictureCard key={item.id} item={item} />
         ))}
-      </div>
+        <div className=" absolute right-0 top-[45vh]">
+          <Arrow arrowPng={RightArrowPng} directionArrow='right'/>
+        </div>
+        <div className=" absolute left-0 top-[45vh]">
+          <Arrow arrowPng={LeftArrowPng} directionArrow='left'/>
+        </div>
+      </section>
+
       <div className=" h-[10vh] w-full flex justify-center">
       { 
         currentPage && currentPage.previous !== null ? <Button text="Regresar" handleFunction={() => handleButton(currentPage.previous)} /> 
