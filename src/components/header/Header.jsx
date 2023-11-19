@@ -14,9 +14,17 @@ const Header = ({ name, slogan, homeRef }) => {
   const container = useRef(null)
   const [width, setWidth ] = useState(0)
 
+  function handleResize (){
+    setWidth(window.innerWidth)
+  }
+
   useEffect(() => {
-    setWidth(window.innerHeight)
-  },[])
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   const { data, error } = useGetData(artistHeader)
 

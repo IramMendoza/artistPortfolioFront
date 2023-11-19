@@ -8,7 +8,7 @@ const TeamCard = ({ item, refContainer }) => {
     return (
             <div className=" w-full px-7 py-7">
 
-                <div data-style="photo" style={
+                <div data-style="photo" className=" tablet:h-[35vh] tablet:w-[35vh] md:h-[50vh] md:w-[40vh] lg:w-[40vh]" style={
                     {
                         backgroundImage: `url(${item.photo})`,
                         backgroundSize: "cover", // Ajusta la imagen al tamaño del contenedor

@@ -3,6 +3,7 @@ import { useRandomNumber } from "../hooks/useRandomNumber"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import SectionHeader from "../components/generics/SectionHeader"
+import Loading from "../components/generics/Loading"
 
 function PictureCard ({item, listLength}) {
 
@@ -17,7 +18,6 @@ function PictureCard ({item, listLength}) {
     <div className=" w-full sm:w-[65vh] md:w-[65vh] lg:w-[50vh] lg:px-[2vh] lg:py-[5vh] px-[4vh] py-[4vh]">
       <motion.div
         transition={{ duration : 0.2 }} animate={{ opacity : 1 }} initial={{ opacity : 0 }}
-        className=""
         style={
           {
             backgroundImage: `url(${item.pictures[randomPicture].picture})`,
@@ -73,6 +73,8 @@ const Gallery = () => {
       <div className=" pt-[10vh] text-center">
         <SectionHeader header='Eventos' />
       </div>
+
+      {!currentPage.results && <Loading />}
 
       <div className="flex overflow-x-scroll">
         {currentPage.results && currentPage.results.map((item) => (

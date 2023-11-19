@@ -1,15 +1,15 @@
 const ListRenderer = ({ list, CardComponent, display }) => {
-
-  if (!list){
-    return <div>Loading...</div>
+  if (!list) {
+    return <div>Loading...</div>;
   }
-  return (
-    <div style={{ display : display }}>
-      {list.map((item) => (
-        <CardComponent key={item.id} item={item} />
-      ))}
-    </div>
-  )
-}
 
-export default ListRenderer
+  return (
+    <div style={{ display: display }}>
+      {list ? list.map((item) => (
+        <CardComponent key={item.id} item={item} />
+      )) : []}
+    </div>
+  );
+};
+
+export default ListRenderer;
