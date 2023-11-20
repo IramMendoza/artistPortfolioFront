@@ -5,9 +5,9 @@ import { useGetData } from '../../hooks/useGetData'
 import EventCard from './EventCard'
 import { useState, useEffect } from "react"
 
-function ListRenderer ({CardComponent, list, display}){
+function ListRenderer ({CardComponent, list}){
   return(
-    <div style={{display : display}}>
+    <div className=" md:h-[55vh] md:items-center md:flex overflow-x-scroll">
       {list.map((item) => (
         <CardComponent key={item.id} item={item} />
       ))}
@@ -35,14 +35,14 @@ const Events = () => {
   const { data, error } = useGetData(artistEvents + 3)
 
   return (
-    <section className=' overflow-x-visible w-full'>
+    <section className=' h-full overflow-x-visible w-full'>
 
       <div className=" flex justify-center">
         <SectionHeader header='EVENTOS'/>
       </div>
 
-      <div className=" w-full lg:flex lg:justify-center overflow-x-scroll">
-        <ListRenderer list={data ? data : []} CardComponent={EventCard} display={ width > 640 ? 'flex' : '' } />
+      <div className=" w-full md:flex md:justify-center overflow-x-scroll">
+        <ListRenderer list={data ? data : []} CardComponent={EventCard} />
       </div>
 
       <RightArrow/>

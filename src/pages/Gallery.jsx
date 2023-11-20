@@ -9,6 +9,17 @@ import Arrow from "../components/gallery/Arrow"
 import PictureCard from "../components/gallery/PictureCard"
 import Loading from "../components/generics/Loading"
 
+function ListRenderer ({ currentPage, PictureCard }){
+  return (
+    <div className="flex" id='galleryContainer'>
+      { currentPage.results && currentPage.results.map((item) => (
+          <PictureCard id='galleryContainer' key={item.id} item={item} />
+        ))
+      }
+    </div>
+  )
+}
+
 const Gallery = () => {
 
   const [currentPage, setCurrentPage] = useState(
@@ -20,21 +31,24 @@ const Gallery = () => {
   function handleButton (link){
     axios.get(link)
     .then(response => {
-      setCurrentPage(response.data);
-      window.scrollTo({ left: 0, behavior: 'smooth' });
+      setCurrentPage(response.data)
+      document.getElementById('galleryContainer').scrollTo({ left: 0, behavior: 'smooth' })
     })
     .catch(error => setError(error))
   }
 
   useEffect(() => {
     axios.get(artistPictures)
-    .then(response => setCurrentPage(response.data))
+    .then(response => {
+      setCurrentPage(response.data)
+      document.getElementById('galleryContainer').scrollTo({ left: 0, behavior: 'smooth' })
+    })
     .catch(error => setError(error))
   },[])
 
   return (
     <motion.section transition={{ duration : 0.2 }} animate={{ opacity : 1 }} initial={{ opacity : 0 }}
-      className=" bg-black h-screen">
+      className=" bg-black h-screen overflow-y-hidden">
 
       <div className=" pt-[10vh] text-center">
         <SectionHeader header='Galeria' />
@@ -43,9 +57,7 @@ const Gallery = () => {
       {
         !currentPage ? <Loading/> :
         <section className="flex overflow-x-scroll">
-        {currentPage.results && currentPage.results.map((item) => (
-          <PictureCard key={item.id} item={item} />
-        ))}
+          <ListRenderer currentPage={currentPage} PictureCard={PictureCard}/>
         <div className=" absolute right-0 top-[45vh]">
           <Arrow arrowPng={RightArrowPng} directionArrow='right' reference={refContainer}/>
         </div>
@@ -64,6 +76,8 @@ const Gallery = () => {
         currentPage && currentPage.next !== null ? <Button text="Siguiente" handleFunction={() => handleButton(currentPage.next)} /> 
         : null
       }
+
+
       </div>
     </motion.section>
   )

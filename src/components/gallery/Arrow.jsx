@@ -12,7 +12,7 @@ function Arrow ({ arrowPng, directionArrow, reference }){
   const leftArrowAnimation = useTransform(scrollXProgress, [0, 0.2, 1],[1, 1, 0])
 
   useEffect(() => {
-    console.log(`movementX: ${scrollXProgress}`);
+    console.log(`movementX: ${scrollXProgress}`)
   }, [scrollXProgress]);
 
     return (

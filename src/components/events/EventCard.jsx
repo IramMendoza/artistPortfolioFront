@@ -9,7 +9,7 @@ const EventCard = ({ item }) => {
 
   const controls = useAnimation()
 
-  function handleEventNameAnimation () {
+  function handleEventNameAnimation (){
     controls.start('x')
     console.log('animacion activada')
   }
@@ -43,9 +43,10 @@ const EventCard = ({ item }) => {
   return (
     <div
       ref={card}
-      className=" w-full sm:w-[65vh] md:w-[65vh] lg:w-[50vh] lg:px-[2vh] lg:py-[5vh] px-[4vh] py-[4vh]">
+      className=" w-full sm:w-[40vh] md:h-[40vh] md:w-[50vh] px-[4vh] py-[4vh] md:py-[1px]">
       <motion.div
-        variants={cardVariants}   
+        onMouseOver={handleEventNameAnimation}
+        variants={cardVariants}
         whileHover='hover'
         className=" overflow-hidden"
         style={
@@ -58,7 +59,7 @@ const EventCard = ({ item }) => {
           }
         }>
 
-        <div className=" lg:py-[8rem] py-[5rem]" />
+        <div className=" md:py-[10vh] py-[5rem]" />
 
         <motion.div
           variants={eventNameVariants}

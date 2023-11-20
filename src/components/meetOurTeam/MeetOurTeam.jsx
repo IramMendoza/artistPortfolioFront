@@ -17,6 +17,7 @@ const MeetOurTeam = () => {
   }
 
   useEffect(() => {
+    handleResize()
     window.addEventListener('resize', handleResize)
 
     return () => {
@@ -30,7 +31,7 @@ const MeetOurTeam = () => {
     }
   )
 
-  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-195%'])
+  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-205%'])
 
   const { data, error } = useGetData(artistMembers)
 
@@ -38,14 +39,14 @@ const MeetOurTeam = () => {
     <>
       {
 
-      width < 800 ?
+      width < 426 ?
 
       <section className={`relative h-[300vh] md:h-[10vh] bg-black`} ref={meetOurTeamContainerRef}>
         <div className={` sticky top-[22vh] h-[80vh] z-20 items-center overflow-hidden`}>
           <div className=" pl-[4vh]">
             <SectionHeader header='INTEGRANTES'/>
           </div>
-            <motion.div style={{ x : width < 1024 ? movementValues : 0 }}>
+            <motion.div style={{ x : movementValues }}>
               <ListRenderer list={data && data} CardComponent={TeamCard} display='flex'/>
             </motion.div>
         </div>
@@ -53,10 +54,12 @@ const MeetOurTeam = () => {
 
       : 
 
-      <section className="">
-
-        <div className=" flex justify-center">
-          <div className=" sm:flex">
+      <section className="h-[50vh]">
+        <div className=" pl-[4vh]">
+          <SectionHeader header='INTEGRANTES'/>
+        </div>
+        <div className=" px-[4vh] flex justify-center">
+          <div className="flex overflow-x-scroll">
             {data && data.map((item) => (
             <TeamCard key={item.id} item={item} />
             ))}
