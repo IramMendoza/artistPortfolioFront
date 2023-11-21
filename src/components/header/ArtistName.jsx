@@ -1,9 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-const ArtistName = ({ name, homeReference, galleryReference }) => {
+const ArtistName = ({ name, galleryReference, reference }) => {
 
     const { scrollYProgress } = useScroll(
-        { target : homeReference }
+        { target : reference }
     )
 
     const opacity = useTransform(scrollYProgress, [0, 0.5, 0.6, 1],[1, 1, 0, 0])

@@ -8,15 +8,14 @@ const ImageAbout = ({refContainer}) => {
         { target : refContainer, offset : ['start end', 'end start'] }
     )
 
-    const movementX = useTransform(scrollYProgress, [0, 0.1, 0.4, 1],['200%','200%', '37%', '37%'])
+    const movementX = useTransform(scrollYProgress, [0, 0.2, 0.4, 1],['100%','100%','20%','20%'])
 
   return (
-      <div className=" w-full flex justify-end overflow-visible">
-        <motion.img
-        className=" absolute z-50"
-        style={{ x : movementX }} 
-        src={ImageAboutPng} />
-      </div>
+    <div className=" flex justify-end">
+      <motion.img
+      style={{ x : movementX }} 
+      src={ImageAboutPng} />
+    </div>
   )
 }
 

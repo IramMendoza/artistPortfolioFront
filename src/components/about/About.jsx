@@ -6,7 +6,7 @@ import { useRef, useState, useEffect } from "react"
 
 const CustomSectionHeader = ({ header }) => {
   return (
-    <div className=" flex justify-start md:flex md:justify-center">
+    <div className=" flex px-[5vh] md:flex md:justify-center">
       <SectionHeader header={header} />
     </div>
   )
@@ -15,22 +15,9 @@ const CustomSectionHeader = ({ header }) => {
 const About = ({ about }) => {
 
   const aboutContainer = useRef(null)
-  const [height, setHeight] = useState(0)
-
-  function handleResize (){
-    setHeight(window.innerHeight)
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   return (
-    <div className={`relative z-0 ${height < 1000 ? 'h-[70vh]' : 'h-[70vh]'} overflow-x-visible`} ref={aboutContainer}>
+    <section className='' ref={aboutContainer}>
       <AboutBackground>
 
         <CustomSectionHeader header={"NOSOTROS"} />
@@ -40,7 +27,7 @@ const About = ({ about }) => {
         <ImageAboutTest refContainer={aboutContainer} />
 
       </AboutBackground>
-    </div>
+    </section>
   )
 }
 
