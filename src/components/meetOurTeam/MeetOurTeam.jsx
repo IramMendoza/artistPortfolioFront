@@ -31,7 +31,7 @@ const MeetOurTeam = () => {
     }
   )
 
-  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-205%'])
+  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-250%'])
 
   const { data, error } = useGetData(artistMembers)
 

@@ -1,4 +1,4 @@
-import { motion, useAnimation } from "framer-motion"
+import { animate, motion, useAnimation } from "framer-motion"
 import { useRandomNumber } from "../../hooks/useRandomNumber"
 import EventNameCard from "./EventNameCard"
 import { useRef } from "react"
@@ -6,13 +6,6 @@ import { useRef } from "react"
 const EventCard = ({ item }) => {
 
   const card = useRef(null)
-
-  const controls = useAnimation()
-
-  function handleEventNameAnimation (){
-    controls.start('x')
-    console.log('animacion activada')
-  }
 
   const cardVariants = {
     hover : {
@@ -24,13 +17,9 @@ const EventCard = ({ item }) => {
     }
   }
 
-  const eventNameVariants = {
-    movement : {
-      x : [10,300],
-      transition : {
-        duration : 3
-      }
-    }
+  const animate = {
+    x : [-100, -600, -100], 
+    transition: { duration: 30, repeat: Infinity } 
   }
 
   const randomNumber = useRandomNumber(0, item.pictures.length - 1)
@@ -45,7 +34,6 @@ const EventCard = ({ item }) => {
       ref={card}
       className=" w-full sm:w-[40vh] md:h-[40vh] md:w-[50vh] px-[4vh] py-[4vh] md:py-[1px]">
       <motion.div
-        onMouseOver={handleEventNameAnimation}
         variants={cardVariants}
         whileHover='hover'
         className=" overflow-hidden"
@@ -61,9 +49,7 @@ const EventCard = ({ item }) => {
 
         <div className=" md:py-[10vh] py-[5rem]" />
 
-        <motion.div
-          variants={eventNameVariants}
-          animate={controls}>
+        <motion.div animate={animate}>
           <EventNameCard eventName={item.venue} />
         </motion.div>
 

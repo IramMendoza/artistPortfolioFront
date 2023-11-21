@@ -3,7 +3,7 @@ import { BrowserRouter, Routes } from "react-router-dom"
 import Home from './pages/Home'
 import Gallery from './pages/Gallery'
 import Events from './pages/Events'
-import NextEvents from "./pages/NextEvents"
+import NextEvents from './pages/NextEvents'
 import Contact from "./pages/Contact"
 import Navbar from './components/navbar/Navbar'
 

@@ -10,8 +10,11 @@ import PictureCard from "../components/gallery/PictureCard"
 import Loading from "../components/generics/Loading"
 
 function ListRenderer ({ currentPage, PictureCard }){
+
+  const refContainer = useRef(null)
+
   return (
-    <div className="flex" id='galleryContainer'>
+    <div ref={refContainer} className="flex" id='galleryContainer'>
       { currentPage.results && currentPage.results.map((item) => (
           <PictureCard id='galleryContainer' key={item.id} item={item} />
         ))
@@ -26,6 +29,7 @@ const Gallery = () => {
     {results:[], previous:null, next:null }
     )
   const [error, setError] = useState(null)
+
   const refContainer = useRef(null)
 
   function handleButton (link){
