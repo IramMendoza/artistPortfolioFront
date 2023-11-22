@@ -6,9 +6,9 @@ const ArtistName = ({ name, galleryReference, reference }) => {
         { target : reference }
     )
 
-    const opacity = useTransform(scrollYProgress, [0, 0.5, 0.6, 1],[1, 1, 0, 0])
+    const opacity = useTransform(scrollYProgress, [0, 0.1, 0.5, 1],[1, 1, 0, 0])
 
-    const color = useTransform(scrollYProgress,[0, 0.3, 0.5, 1],["#ffffff", "#ffffff", "#FF2015", "#FF2015"])
+    const color = useTransform(scrollYProgress,[0, 0.3, 0.4, 1],["#ffffff", "#ffffff", "#FF2015", "#FF2015"])
     
 
     return (

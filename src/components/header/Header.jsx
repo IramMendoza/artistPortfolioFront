@@ -6,7 +6,7 @@ import DownArrow from "./DownArrow.jsx"
 import { useGetData } from "../../hooks/useGetData.js"
 import { artistHeader } from '../../../apiConfig.js'
 import { motion } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 const Header = ({ name, slogan }) => {
@@ -14,25 +14,12 @@ const Header = ({ name, slogan }) => {
     const [refInView, inView] = useInView(true)
     const galleryContainerReference = useRef(null)
     const container = useRef(null)
-    const [width, setWidth] = useState(0)
-
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize)
-
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [])
 
     const { data, error } = useGetData(artistHeader)
 
     return (
 
-        <motion.section className={`h-[180vh] overflow-hidden ${width > 1000 ? '' : ''}`}
+        <motion.section className='h-[180vh] overflow-hidden'
             ref={container} transition={{ duration: 1 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
 
             <div ref={refInView}>

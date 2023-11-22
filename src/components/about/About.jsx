@@ -17,7 +17,7 @@ const About = ({ about }) => {
   const aboutContainer = useRef(null)
 
   return (
-    <section className='' ref={aboutContainer}>
+    <section ref={aboutContainer}>
       <AboutBackground>
 
         <CustomSectionHeader header={"NOSOTROS"} />

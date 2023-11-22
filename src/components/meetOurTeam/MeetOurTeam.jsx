@@ -5,7 +5,6 @@ import { artistMembers } from "../../../apiConfig"
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from "framer-motion"
 import ListRenderer from "../generics/ListRenderer"
-import Loading from "../generics/Loading"
 
 const MeetOurTeam = () => {
 
@@ -31,7 +30,7 @@ const MeetOurTeam = () => {
     }
   )
 
-  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-250%'])
+  const movementValues = useTransform(scrollYProgress, [0,1],['1%','-230%'])
 
   const { data, error } = useGetData(artistMembers)
 
@@ -39,10 +38,10 @@ const MeetOurTeam = () => {
     <>
       {
 
-      width < 426 ?
+      width < 450 ?
 
-      <section className={`relative h-[300vh] md:h-[10vh] bg-black`} ref={meetOurTeamContainerRef}>
-        <div className={` sticky top-[22vh] h-[80vh] z-20 items-center overflow-hidden`}>
+      <section className='relative h-[300vh] bg-black' ref={meetOurTeamContainerRef}>
+        <div className='sticky top-[22vh] h-[80vh] z-20 items-center overflow-hidden'>
           <div className=" pl-[4vh]">
             <SectionHeader header='INTEGRANTES'/>
           </div>

@@ -22,7 +22,7 @@
 }
 
 
-.pl-2::-webkit-scrollbar {
+.scrollBar::-webkit-scrollbar {
     display: none;
   }
 
