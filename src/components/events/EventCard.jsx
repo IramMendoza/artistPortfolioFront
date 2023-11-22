@@ -47,7 +47,7 @@ const EventCard = ({ item }) => {
           }
         }>
 
-        <div className=" md:py-[10vh] py-[5rem]" />
+        <div className=" py-[5rem]" />
 
         <motion.div animate={animate}>
           <EventNameCard eventName={item.venue} />

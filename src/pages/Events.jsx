@@ -5,19 +5,25 @@ import { useState, useEffect } from "react"
 import SectionHeader from "../components/generics/SectionHeader"
 import Loading from "../components/generics/Loading"
 
-function PictureCard ({item, listLength}) {
+function CardButton (){
+  return (
+    <button className=" flex items-center bg-gradient-to-r from-rose-900 to-rose-600 text-white font-semibold px-[3vh] py-[1vh] rounded-2xl">Ver Detalles</button>
+  )
+}
+
+function PictureCard({ item, listLength }) {
 
   const [randomPicture, setRandomPicture] = useState(0)
 
   useEffect(() => {
-    const randomNumber = useRandomNumber(0, listLength -1)
+    const randomNumber = useRandomNumber(0, listLength - 1)
     setRandomPicture(randomNumber)
-  },[])
+  }, [])
 
   return (
-    <div className=" w-full sm:w-[65vh] md:w-[65vh] lg:w-[50vh] lg:px-[2vh] lg:py-[5vh] px-[4vh] py-[4vh]">
+    <div className=" w-full sm:w-[65vh] md:w-[65vh] lg:w-[50vh] lg:px-[2vh] lg:py-[5vh] px-[5vh] py-[5vh]">
       <motion.div
-        transition={{ duration : 0.2 }} animate={{ opacity : 1 }} initial={{ opacity : 0 }}
+        transition={{ duration: 0.2 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}
         style={
           {
             backgroundImage: `url(${item.pictures[randomPicture].picture})`,
@@ -28,17 +34,28 @@ function PictureCard ({item, listLength}) {
           }
         }>
 
-        <div className="px-[30vh] py-[30vh]" />
+        <div className=" py-[12vh] px-[20vh]" />
+
+        <div style={{ whiteSpace: "nowrap" }} className=" backdrop-blur-xl bg-black/30 py-[3px] text-center text-3xl text-white">{item.venue}</div>
+
+        <div className=" py-[6vh] px-[10vh]" />
+
+        <div className=" flex justify-center">
+          <CardButton/>
+        </div>
+
+
+        <div className=" py-[6vh] px-[10vh]" />
 
       </motion.div>
-    </div> 
+    </div>
   )
 }
 
-function Button ({ handleFunction, text }) {
+function Button({ handleFunction, text }) {
   return (
     <button className=" text-white px-[3vh] text-xl md:text-2xl" onClick={handleFunction}>
-      { text }
+      {text}
     </button>
   )
 }
@@ -46,29 +63,29 @@ function Button ({ handleFunction, text }) {
 const Gallery = () => {
 
   const [error, setError] = useState(null)
-  
-  const [currentPage, setCurrentPage] = useState(
-    {results:[], previous:null, next:null }
-    )
 
-  function handleButton (link){
+  const [currentPage, setCurrentPage] = useState(
+    { results: [], previous: null, next: null }
+  )
+
+  function handleButton(link) {
     axios.get(link)
-    .then(response => {
-      setCurrentPage(response.data);
-      window.scrollTo({ left: 0, behavior: 'smooth' });
-    })
-    .catch(error => setError(error))
+      .then(response => {
+        setCurrentPage(response.data);
+        window.scrollTo({ left: 0, behavior: 'smooth' });
+      })
+      .catch(error => setError(error))
   }
 
   useEffect(() => {
     axios.get(artistEventsPages)
-    .then(response => setCurrentPage(response.data))
-    .catch(error => setError(error))
-  },[])
+      .then(response => setCurrentPage(response.data))
+      .catch(error => setError(error))
+  }, [])
 
   return (
-    <motion.section transition={{ duration : 0.5 }} animate={{ opacity : 1 }} initial={{ opacity : 0 }}
-      className=" bg-black h-screen">
+    <motion.section transition={{ duration: 0.5 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}
+      className=" bg-black h-screen overflow-y-hidden">
 
       <div className=" pt-[10vh] text-center">
         <SectionHeader header='Eventos' />
@@ -82,14 +99,14 @@ const Gallery = () => {
         ))}
       </div>
       <div className=" h-[10vh] w-full flex justify-center">
-      { 
-        currentPage && currentPage.previous !== null ? <Button text="Regresar" handleFunction={() => handleButton(currentPage.previous)} /> 
-        : null
-      }
-      { 
-        currentPage && currentPage.next !== null ? <Button text="Siguiente" handleFunction={() => handleButton(currentPage.next)} /> 
-        : null
-      }
+        {
+          currentPage && currentPage.previous !== null ? <Button text="Regresar" handleFunction={() => handleButton(currentPage.previous)} />
+            : null
+        }
+        {
+          currentPage && currentPage.next !== null ? <Button text="Siguiente" handleFunction={() => handleButton(currentPage.next)} />
+            : null
+        }
       </div>
     </motion.section>
   )
