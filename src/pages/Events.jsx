@@ -1,24 +1,20 @@
-import { artistEventsPages } from "../../apiConfig"
+import { artistEventsPages, eventDetail } from "../../apiConfig"
+import { Link } from "react-router-dom"
 import { useRandomNumber } from "../hooks/useRandomNumber"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import SectionHeader from "../components/generics/SectionHeader"
 import Loading from "../components/generics/Loading"
 
-function CardButton (){
+function CardButton({ eventId }) {
   return (
-    <button className=" flex items-center bg-gradient-to-r from-rose-900 to-rose-600 text-white font-semibold px-[3vh] py-[1vh] rounded-2xl">Ver Detalles</button>
+    <Link to={'event/' + eventId }>
+      <button className=" flex items-center bg-gradient-to-r from-rose-900 to-rose-600 text-white font-semibold px-[3vh] py-[1vh] rounded-2xl">Ver Detalles</button>
+    </Link>
   )
 }
 
-function PictureCard({ item, listLength }) {
-
-  const [randomPicture, setRandomPicture] = useState(0)
-
-  useEffect(() => {
-    const randomNumber = useRandomNumber(0, listLength - 1)
-    setRandomPicture(randomNumber)
-  }, [])
+function PictureCard({ picture, venue, eventId }) {
 
   return (
     <div className=" w-full sm:w-[65vh] md:w-[65vh] lg:w-[50vh] lg:px-[2vh] lg:py-[5vh] px-[5vh] py-[5vh]">
@@ -26,7 +22,7 @@ function PictureCard({ item, listLength }) {
         transition={{ duration: 0.2 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }}
         style={
           {
-            backgroundImage: `url(${item.pictures[randomPicture].picture})`,
+            backgroundImage: `url(${picture})`,
             backgroundSize: "cover", // Ajusta la imagen al tamaño del contenedor
             backgroundRepeat: "no-repeat", // Evita la repetición de la imagen de fondo
             backgroundPosition: "center center",
@@ -36,14 +32,13 @@ function PictureCard({ item, listLength }) {
 
         <div className=" py-[12vh] px-[20vh]" />
 
-        <div style={{ whiteSpace: "nowrap" }} className=" backdrop-blur-xl bg-black/30 py-[3px] text-center text-3xl text-white">{item.venue}</div>
+        <div style={{ whiteSpace: "nowrap" }} className=" backdrop-blur-xl bg-black/50 py-[3px] text-center text-3xl text-white">{venue}</div>
 
         <div className=" py-[6vh] px-[10vh]" />
 
         <div className=" flex justify-center">
-          <CardButton/>
+          <CardButton eventId={eventId} />
         </div>
-
 
         <div className=" py-[6vh] px-[10vh]" />
 
@@ -52,7 +47,7 @@ function PictureCard({ item, listLength }) {
   )
 }
 
-function Button({ handleFunction, text }) {
+function PrevNextButton({ handleFunction, text }) {
   return (
     <button className=" text-white px-[3vh] text-xl md:text-2xl" onClick={handleFunction}>
       {text}
@@ -72,7 +67,8 @@ const Gallery = () => {
     axios.get(link)
       .then(response => {
         setCurrentPage(response.data);
-        window.scrollTo({ left: 0, behavior: 'smooth' });
+        const container = document.getElementById('containerCards')
+        container.scrollTo({ left: 0, behavior: 'smooth'})
       })
       .catch(error => setError(error))
   }
@@ -94,17 +90,21 @@ const Gallery = () => {
       {!currentPage.results && <Loading />}
 
       <div className="flex overflow-x-scroll">
-        {currentPage.results && currentPage.results.map((item) => (
-          <PictureCard key={item.id} item={item} listLength={item.pictures.length} />
-        ))}
+        {currentPage.results && currentPage.results.map((item) => {
+          const randomNumber = useRandomNumber(0, item.pictures.length - 1)
+          return (
+            <PictureCard key={item.id} eventId={item.id} venue={item.venue} picture={item.pictures[randomNumber].picture} />
+          )
+        })}
+
       </div>
       <div className=" h-[10vh] w-full flex justify-center">
         {
-          currentPage && currentPage.previous !== null ? <Button text="Regresar" handleFunction={() => handleButton(currentPage.previous)} />
+          currentPage && currentPage.previous !== null ? <PrevNextButton text="Regresar" handleFunction={() => handleButton(currentPage.previous)} />
             : null
         }
         {
-          currentPage && currentPage.next !== null ? <Button text="Siguiente" handleFunction={() => handleButton(currentPage.next)} />
+          currentPage && currentPage.next !== null ? <PrevNextButton text="Siguiente" handleFunction={() => handleButton(currentPage.next)} />
             : null
         }
       </div>

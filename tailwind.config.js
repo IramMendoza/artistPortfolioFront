@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily : {
-        custom : ['driusstraight', 'sans']
+        custom : ['driusstraight', 'sans'],
+        google : ['Teko', 'sans-serif']
       },
       screens : { miniPh : "375px", maxPh : "425px" }
     },
